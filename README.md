@@ -1,6 +1,11 @@
 # connect4
 A multiplayer web rendition of the connect 4 game
 
+A Live Demo can be found here [here](https://hoppi164.github.io/connect4/ "connect4")
+
+
+
+####Notes:
 
 Local game (Same computer)
 Turn Based
@@ -8,28 +13,30 @@ Board size 7 columns × 6 rows
 Button at top of each column to drop coins
 You CAN win by diagonals
 
-Backend 	->  node
-Frontend 	-> 	React, material UI
+* Backend 	->  node
+* Frontend 	-> 	React, material UI
 
 
-Future Development:
-> Animate Game coin falling
-> Highlight winning combo
-> Settings for board size
-> AWS Hosted Multiplayer Server
+####Future Development:
+* Animate Game coin falling
+* Highlight winning combo
+* Settings for board size
+* AWS Hosted Multiplayer Server
 
 
 
 
 
-<!-- Pseudo-code -->
+####Pseudo-code
 
-<!-- Globals -->
+>Globals
+```
 directionsMatrix = [ [1,1], [1,0], [1, -1], [0, -1], [-1,-1], [-1,0], [-1,1] ]
 currentColor = ?
+```
 
-
-<!-- function to check 7 directions -->
+>function to check 7 directions
+```
 currentCoords = [x, y] | 3,2
 for direction in directionsMatrix:
 	if arrayoutofbounds:
@@ -39,13 +46,12 @@ for direction in directionsMatrix:
 			break
 		if i == 3:
 			print("Four in a row")
+```
 
-mostRecentNumMatch
-
-
-<!-- function to Drop coin -->
+>function to Drop coin
+```
 pressing button gives you colnumber
-Loop from bottom row to top
+for bottomRow to topRow
 	if row[colnumber] is null:
 	return co-ords
-
+```
