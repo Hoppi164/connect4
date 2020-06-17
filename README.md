@@ -16,6 +16,9 @@ You CAN win by diagonals
 * Backend 	->  node
 * Frontend 	-> 	React, material UI
 
+![Basic Wireframe](https://hoppi164.github.io/connect4/wireframe01.png)
+
+
 
 #### Future Development:
 * Animate Game coin falling
