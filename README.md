@@ -21,12 +21,10 @@ You CAN win by diagonals
 
 
 #### Future Development:
-* Animate Game coin falling
-* Highlight winning combo
-* Settings for board size
-* AWS Hosted Multiplayer Server
-
-
+- [ ] Animate Game coin falling
+- [ ] Highlight winning combo
+- [ ] Settings for board size
+- [ ] AWS Hosted Multiplayer Server
 
 
 
