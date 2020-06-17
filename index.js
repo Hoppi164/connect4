@@ -1,5 +1,6 @@
 const e = React.createElement;
-
+// This File is for test hosting using github pages
+// This File will not be opened when running NPM Start
 class Game extends React.Component {
 	constructor(props) {
 		super(props);
