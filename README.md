@@ -5,7 +5,7 @@ A Live Demo can be found here [here](https://hoppi164.github.io/connect4/ "conne
 
 
 
-####Notes:
+#### Notes:
 
 Local game (Same computer)
 Turn Based
@@ -17,7 +17,7 @@ You CAN win by diagonals
 * Frontend 	-> 	React, material UI
 
 
-####Future Development:
+#### Future Development:
 * Animate Game coin falling
 * Highlight winning combo
 * Settings for board size
@@ -27,7 +27,7 @@ You CAN win by diagonals
 
 
 
-####Pseudo-code
+#### Pseudo-code
 
 >Globals
 ```
