@@ -11,7 +11,7 @@ class Game extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1> Insert Connect4 Table! </h1>
+				<h1> Insert Connect4 Table! GITHUB PAGES </h1>
 				<h1> Insert Connect4 info! </h1>
 			</div>
 		);
