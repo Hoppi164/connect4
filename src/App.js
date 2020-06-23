@@ -25,14 +25,11 @@ function App() {
 	const classes = useStyles();
 	const numCols = 7;
 	const numRows = 6;
-	let initialGrid = [];
-	for (var row = 0; row < numRows; row++) {
-		let emptyRow = [];
-		for (var col = 0; col < numCols; col++) {
-			emptyRow.push(0);
-		}
-		initialGrid.push(emptyRow);
-	}
+
+	// Create row x col sized empty array
+	let initialGrid = Array.from({ length: numRows }, () =>
+		Array.from({ length: numCols }, () => 0)
+	);
 
 	// Define state Vars
 	const [redsTurn, setRedsTurn] = useState(true);
