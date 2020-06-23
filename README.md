@@ -1,9 +1,19 @@
 # connect4
+
 A multiplayer web rendition of the connect 4 game
 
 A Live Demo can be found here [here](https://hoppi164.github.io/connect4/ "connect4")
 
+To run this code yourself perform the following steps:
 
+-   Clone the repo
+    `git clone https://github.com/Hoppi164/connect4.git`
+-   Open the new directory
+    `cd connect4`
+-   Install Dependancies
+    `npm install`
+-   Start the server
+    `npm start`
 
 #### Notes:
 
@@ -13,30 +23,29 @@ Board size 7 columns × 6 rows
 Button at top of each column to drop coins
 You CAN win by diagonals
 
-* Backend 	->  node
-* Frontend 	-> 	React, material UI
+-   Backend -> node
+-   Frontend -> React, material UI
 
 ![Basic Wireframe](https://hoppi164.github.io/connect4/wireframe01.png)
 
-
-
 #### Future Development:
-- [ ] Animate Game coin falling
-- [ ] Highlight winning combo
-- [ ] Settings for board size
-- [ ] AWS Hosted Multiplayer Server
 
-
+-   [ ] Animate Game coin falling
+-   [ ] Highlight winning combo
+-   [ ] Settings for board size
+-   [ ] AWS Hosted Multiplayer Server
 
 #### Pseudo-code
 
->Globals
+> Globals
+
 ```
 directionsMatrix = [ [1,1], [1,0], [1, -1], [0, -1], [-1,-1], [-1,0], [-1,1] ]
 currentColor = ?
 ```
 
->function to check 7 directions
+> function to check 7 directions
+
 ```
 currentCoords = [x, y] | 3,2
 for direction in directionsMatrix:
@@ -49,7 +58,8 @@ for direction in directionsMatrix:
 			print("Four in a row")
 ```
 
->function to Drop coin
+> function to Drop coin
+
 ```
 pressing button gives you colnumber
 for bottomRow to topRow
@@ -57,11 +67,7 @@ for bottomRow to topRow
 	return co-ords
 ```
 
-
-
---------------------------------------------
-
-
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -96,4 +102,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Publish files to a gh-pages branch on GitHub
 This updates the live demo at https://hoppi164.github.io/connect4/
-
