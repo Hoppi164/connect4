@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import _ from "lodash"; // Import the entire lodash library
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import {
@@ -35,6 +36,12 @@ function App() {
 	const [redsTurn, setRedsTurn] = useState(true);
 	const [grid, setGrid] = useState(initialGrid);
 
+	const dropCoin = (colnum) => {
+		const newGrid = _.cloneDeep(grid); //create a deep clone of the grid
+		newGrid[0][colnum] = 1; // modify the clone
+		setGrid(newGrid); // set the clone as the new grid
+	};
+
 	// Return App HTML
 	return (
 		<div>
@@ -49,7 +56,11 @@ function App() {
 						<TableRow>
 							{grid[0].map((col, index) => (
 								<TableCell align="center" key={index}>
-									<Button variant="contained" color="primary">
+									<Button
+										variant="contained"
+										color="primary"
+										onClick={() => dropCoin(index)}
+									>
 										<ArrowDownwardIcon />
 									</Button>
 								</TableCell>
