@@ -38,8 +38,20 @@ function App() {
 
 	const dropCoin = (colnum) => {
 		const newGrid = _.cloneDeep(grid); //create a deep clone of the grid
-		newGrid[0][colnum] = 1; // modify the clone
-		setGrid(newGrid); // set the clone as the new grid
+
+		// loop from bottom to top
+		for (var rowNum = newGrid.length - 1; rowNum >= 0; rowNum--) {
+			// if cell is null
+			if (!newGrid[rowNum][colnum]) {
+				let color = redsTurn ? "Red" : "Yellow"; //determine who's turn it is
+				newGrid[rowNum][colnum] = color; // add coin to cell
+				setRedsTurn(!redsTurn); // Toggle turn
+				break;
+			}
+		}
+
+		// Update the grid
+		setGrid(newGrid);
 	};
 
 	// Return App HTML
