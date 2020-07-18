@@ -1,7 +1,6 @@
 {
   "name": "connect4",
   "version": "0.1.0",
-  "homepage": "https://hoppi164.github.io/connect4",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.2",
