@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react';
 import "./App.css";
 import _ from "lodash"; // Import the entire lodash library
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
   }
 });
 
+
 function App() {
   // Define Const vars
   const classes = useStyles();
@@ -34,6 +35,26 @@ function App() {
   // Define state Vars
   const [redsTurn, setRedsTurn] = useState(true);
   const [grid, setGrid] = useState(initialGrid);
+  const [url, setUrl] = useState('/api');
+  const [message, setMessage] = useState('Fetching Message');
+
+  const fetchData = useCallback(async () => {
+    let response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`status ${response.status}`);
+    }
+    let message = await response.json();
+    setMessage(message.message);
+  }, [url]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+
+
+
+
 
   const dropCoin = colnum => {
     const newGrid = _.cloneDeep(grid); //create a deep clone of the grid
@@ -58,6 +79,7 @@ function App() {
     <div>
       <h1> Insert Connect4 Table! </h1>
       <h1> Insert Connect4 info! </h1>
+      <h1> {message} </h1>
       <h1> {redsTurn ? "Red" : "Yellow"} Turn! </h1>
       <button onClick={() => setRedsTurn(!redsTurn)}> End Turn </button>
 

@@ -28,7 +28,7 @@ if (!isDev && cluster.isMaster) {
   // Answer API requests.
   app.get('/api', function (req, res) {
     res.set('Content-Type', 'application/json');
-    res.send('{"message":"Hello from the custom server!"}');
+    res.send(`{"message":"Hello from the custom server! ${numCPUs}"}`);
   });
 
   // All remaining requests return the React app, so it can handle routing.
@@ -40,3 +40,6 @@ if (!isDev && cluster.isMaster) {
     console.error(`Node ${isDev ? 'dev server' : 'cluster worker '+process.pid}: listening on port ${PORT}`);
   });
 }
+
+
+
