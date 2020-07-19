@@ -2,7 +2,7 @@
 
 A multiplayer web rendition of the connect 4 game
 
-A Live Demo can be found here [here](https://hoppi164.github.io/connect4/ "connect4")
+A Live Demo can be found [here](https://connect-4-backend.herokuapp.com/ "connect4")
 
 To run this code yourself perform the following steps:
 
@@ -49,13 +49,13 @@ currentColor = ?
 ```
 currentCoords = [x, y] | 3,2
 for direction in directionsMatrix:
-	if arrayoutofbounds:
-		continue
-	for(i=0 to 3):
-		if currentCoords + (direction +i) != currentColor
-			break
-		if i == 3:
-			print("Four in a row")
+  if arrayoutofbounds:
+    continue
+  for(i=0 to 3):
+    if currentCoords + (direction +i) != currentColor
+      break
+    if i == 3:
+      print("Four in a row")
 ```
 
 > function to Drop coin
@@ -63,8 +63,8 @@ for direction in directionsMatrix:
 ```
 pressing button gives you colnumber
 for bottomRow to topRow
-	if row[colnumber] is null:
-	return co-ords
+  if row[colnumber] is null:
+  return co-ords
 ```
 
 ---
