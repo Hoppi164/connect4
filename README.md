@@ -48,7 +48,8 @@ Board size 7 columns × 6 rows
 > Globals
 
 ```
-directionsMatrix = [ [1,1], [1,0], [1, -1], [0, -1], [-1,-1], [-1,0], [-1,1] ]
+directionsMatrix = [  [[1,0],[-1,0]], [[0,1],[0,-1]], [[1,1], [-1,-1]], [[1,-1], [-1,1]] ]
+                       [E        W]    [N        S]    [NE         SW]   [NW         SE]
 currentColor = ?
 ```
 
@@ -56,14 +57,26 @@ currentColor = ?
 
 ```
 currentCoords = [x, y] | 3,2
-for direction in directionsMatrix:
-  if arrayoutofbounds:
-    continue
-  for(i=0 to 3):
-    if currentCoords + (direction +i) != currentColor
-      break
-    if i == 3:
+
+
+[red, red, red ,red, yellow]
+
+
+for axis in directionsMatrix:
+  numMatches = 1;
+  for direction in axis:
+    testCell = currentCoords + (direction)
+    while(testCell == currentColor):
+      numMatches += 1
+      try{
+        testCell += (direction)
+      }
+      if numMatches == 4:
+        print("Four in a row")
+        
+    if numMatches == 4:
       print("Four in a row")
+
 ```
 
 > function to Drop coin
