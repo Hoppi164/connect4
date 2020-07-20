@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import gameEventHandlers from '../utils/gameEventHandlers';
+import gameEventHandlers from "../utils/gameEventHandlers";
 import GameMenu from "../components/GameMenu";
 import GameBoard from "../components/GameBoard";
 import { Container } from "@material-ui/core";
@@ -22,4 +22,4 @@ function ConnectFour() {
         </div>
     );
 }
-export default ConnectFour
+export default ConnectFour;

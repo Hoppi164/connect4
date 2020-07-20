@@ -2,12 +2,11 @@
 ** Server Setup
 **************************************************/
 const express = require('express');
-var util = require("util");
-var http = require('http');
-const path = require('path');
 const app = express();
-var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+var util = require("util");
+const path = require('path');
+var server = require('http').Server(app);
+var io = require('socket.io')(server, { origins: '*:*'});
 
 const PORT = process.env.PORT || 5000;
 var rooms = {};
@@ -17,6 +16,7 @@ var rooms = {};
 //   Players = [RedPlayerID, YellowPlayerID]
 //   Board
 //   RedsTurn
+
 
 
 
@@ -73,5 +73,6 @@ function onJoinRoom(data) {
 
 
 // The server should start listening
-server.listen(80);
-
+server.listen(PORT, function () {
+  console.error(`Node listening on port ${PORT}`);
+});
