@@ -12,28 +12,36 @@ To run this code yourself perform the following steps:
     `cd connect4`
 -   Install Dependancies
     `npm install`
--   Start the server
+-   Start the Express server
     `npm start`
+
+-   Open a second terminal
+-   Navigate to the react-ui directory
+    `cd connect4/react-ui`
+-   Install Dependancies
+    `npm install`
+-   Start the React Development server
+    `npm start`
+
 
 #### Notes:
 
-Local game (Same computer)
-Turn Based
 Board size 7 columns × 6 rows
-Button at top of each column to drop coins
-You CAN win by diagonals
 
--   Backend -> node
+-   Backend -> node/Express
 -   Frontend -> React, material UI
 
 ![Basic Wireframe](https://hoppi164.github.io/connect4/wireframe01.png)
 
-#### Future Development:
+#### Todo List:
 
+-   [x] Create Board using Material UI
+-   [x] Create Images for Coins
+-   [ ] Host Multiplayer Server on Heroku
+-   [ ] Calculate Win Condition
 -   [ ] Animate Game coin falling
 -   [ ] Highlight winning combo
 -   [ ] Settings for board size
--   [ ] AWS Hosted Multiplayer Server
 
 #### Pseudo-code
 
@@ -69,7 +77,11 @@ for bottomRow to topRow
 
 ---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+
+
 
 ## Available Scripts
 
@@ -87,18 +99,3 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run deploy`
-
-Publish files to a gh-pages branch on GitHub
-This updates the live demo at https://hoppi164.github.io/connect4/
