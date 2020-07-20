@@ -105,7 +105,7 @@ function App() {
               <TableRow key={index}>
                 {row.map((cell, index) => (
                   <TableCell align="center" key={index}>
-                    {cell}
+                    <img src={cell + ".svg"} height={40}></img>
                   </TableCell>
                 ))}
               </TableRow>
