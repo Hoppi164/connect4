@@ -130,39 +130,41 @@ function App() {
           </form>
         </Card>
       </Grid>
-      <h1> {message} </h1>
-      <h1> {redsTurn ? "Red" : "Yellow"} Turn! </h1>
+      <Container>
+        <h1> {message} </h1>
+        <h1> {redsTurn ? "Red" : "Yellow"} Turn! </h1>
 
-      <TableContainer component={Paper}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              {grid[0].map((col, index) => (
-                <TableCell align="center" key={index}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => dropCoin(index)}
-                  >
-                    <ArrowDownwardIcon />
-                  </Button>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {grid.map((row, index) => (
-              <TableRow key={index}>
-                {row.map((cell, index) => (
+        <TableContainer component={Paper}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                {grid[0].map((col, index) => (
                   <TableCell align="center" key={index}>
-                    <img src={cell + ".svg"} height={40}></img>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => dropCoin(index)}
+                    >
+                      <ArrowDownwardIcon />
+                    </Button>
                   </TableCell>
                 ))}
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {grid.map((row, index) => (
+                <TableRow key={index}>
+                  {row.map((cell, index) => (
+                    <TableCell align="center" key={index}>
+                      <img src={cell + ".svg"} height={70}></img>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </div>
   );
 }
