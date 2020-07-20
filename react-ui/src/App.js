@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import _ from "lodash"; // Import the entire lodash library
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,22 +11,32 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper
+  Paper,
+  TextField,
+  ButtonGroup,
+  Grid,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Container,
 } from "@material-ui/core";
+
+// with ES6 import
+import io from "socket.io-client";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650
-  }
+    minWidth: 650,
+  },
 });
-
+const socket = io("http://localhost:80");
 
 function App() {
   // Define Const vars
   const classes = useStyles();
   const numCols = 7;
   const numRows = 6;
-
   // Create row x col sized empty array
   let initialGrid = Array.from({ length: numRows }, () =>
     Array.from({ length: numCols }, () => 0)
@@ -35,28 +45,40 @@ function App() {
   // Define state Vars
   const [redsTurn, setRedsTurn] = useState(true);
   const [grid, setGrid] = useState(initialGrid);
-  const [url, setUrl] = useState('/api');
-  const [message, setMessage] = useState('Fetching Message');
+  const [message, setMessage] = useState("Fetching Message");
 
-  const fetchData = useCallback(async () => {
-    let response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`status ${response.status}`);
-    }
-    let message = await response.json();
-    setMessage(message.message);
-  }, [url]);
+  /**************************************************
+   ** GAME EVENT HANDLERS
+   **************************************************/
+  const onSocketConnected = async () => {
+    // Send local player data to the game server
+    // socket.emit("new player", {name: 'test'});
+    joinRoom();
+    setMessage("connected");
+  };
+
+  const onSocketDisconnect = async () => {
+    // Socket disconnected
+    console.log("Disconnected from socket server");
+  };
+
+  const joinRoom = async () => {
+    socket.emit("joinRoom", { roomID: "1234" });
+  };
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    // const socket = io.connect("http://localhost", {port: 8000, transports: ["websocket"]});
+    // Start listening for events
+    // Socket connection successful
+    socket.on("connect", onSocketConnected);
+    // Socket disconnection
+    socket.on("disconnect", onSocketDisconnect);
+  });
 
+  //
+  //
 
-
-
-
-
-  const dropCoin = colnum => {
+  const dropCoin = (colnum) => {
     const newGrid = _.cloneDeep(grid); //create a deep clone of the grid
 
     // loop from bottom to top
@@ -77,11 +99,39 @@ function App() {
   // Return App HTML
   return (
     <div>
-      <h1> Insert Connect4 Table! </h1>
-      <h1> Insert Connect4 info! </h1>
+      <Grid container justify="center" m={2}>
+        <Card mt={2}>
+          <form noValidate autoComplete="off">
+            <CardContent>
+              <Grid item xs={12}>
+                <ButtonGroup
+                  variant="contained"
+                  color="primary"
+                  aria-label="contained primary button group"
+                >
+                  <Button>Local Hotseat</Button>
+                  <Button>Create Online Room</Button>
+                  <Button>Join Online Room</Button>
+                </ButtonGroup>
+              </Grid>
+            </CardContent>
+            <CardActions>
+              <Grid item xs={12}>
+                <Box mt={1}>
+                  <TextField
+                    id="outlined-basic"
+                    label="Room ID"
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Box>
+              </Grid>
+            </CardActions>
+          </form>
+        </Card>
+      </Grid>
       <h1> {message} </h1>
       <h1> {redsTurn ? "Red" : "Yellow"} Turn! </h1>
-      <button onClick={() => setRedsTurn(!redsTurn)}> End Turn </button>
 
       <TableContainer component={Paper}>
         <Table className={classes.table}>
