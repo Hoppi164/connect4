@@ -38,6 +38,7 @@ Board size 7 columns × 6 rows
 -   [x] Create Board using Material UI
 -   [x] Create Images for Coins
 -   [ ] Host Multiplayer Server on Heroku
+-   [ ] Re-add GH Pages hosting for faster initial page rendering
 -   [ ] Calculate Win Condition
 -   [ ] Animate Game coin falling
 -   [ ] Highlight winning combo
