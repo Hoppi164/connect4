@@ -13,6 +13,7 @@ const createListeners = (setMessage) => {
   const onSocketConnected = async () => {
     // Send local player data to the game server
     // socket.emit("new player", {name: 'test'});
+    console.log("Socket Connected");
     requestRoomEntry();
     setMessage("Connected");
   };
@@ -23,7 +24,9 @@ const createListeners = (setMessage) => {
   };
 
   const requestRoomEntry = async () => {
-    socket.emit("requestRoomEntry", { roomID: "1234" });
+    let roomID = 1234;
+    console.log(`Requesting Entry To Room ${roomID}`);
+    socket.emit("requestRoomEntry", { roomID: roomID });
   };
   const onJoinedRoom = async (data) => {
     console.log("Room Joined", data);
@@ -37,7 +40,6 @@ const createListeners = (setMessage) => {
   socket.on("disconnect", onSocketDisconnect);
   // Socket connection successful
   socket.on("joinedRoom", onJoinedRoom);
-
 };
 
 export default { createListeners };
