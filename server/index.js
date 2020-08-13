@@ -67,8 +67,8 @@ function onClientDisconnect() {
 // Client is attempting to join room
 function onRequestRoomEntry(data) {
   data["clientID"] = this.id;
+  util.log("RoomEntry Requested: " + data.roomID);
   this.emit("joinedRoom", data);
-  // util.log("joinRoom Requested: " + data.roomID);
 };
 
 
