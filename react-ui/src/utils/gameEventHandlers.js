@@ -3,7 +3,7 @@ import io from "socket.io-client";
 var backendURL = window.location.origin;
 // If hosted online - set backend url to heroku app
 if (!backendURL.includes("localhost")) {
-  backendURL = "https://connect-4-backend.herokuapp.com/connect4";
+  backendURL = "https://connect-4-backend.herokuapp.com/";
 }
 console.log("backendURL", backendURL);
 
