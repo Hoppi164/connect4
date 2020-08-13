@@ -48,6 +48,7 @@ app.get('*', function(request, response) {
 // New socket connection
 function onSocketConnection(client) {
   util.log("New player has connected: "+client.id);
+  util.log("New player has connected TEST: "+client.id);
 
   // Listen for client disconnected
   client.on("disconnect", onClientDisconnect);
