@@ -52,7 +52,7 @@ function onSocketConnection(client) {
   // Listen for client disconnected
   client.on("disconnect", onClientDisconnect);
   // Listen for client joining Room
-  client.on("joinRoom", onJoinRoom);
+  client.on("requestRoomEntry", onRequestRoomEntry);
 }
 
 
@@ -65,8 +65,10 @@ function onClientDisconnect() {
 };
 
 // Client is attempting to join room
-function onJoinRoom(data) {
-  util.log("joinRoom Requested: " + data.roomID);
+function onRequestRoomEntry(data) {
+  data["clientID"] = this.id;
+  util.log("RoomEntry Requested: " + data.roomID);
+  this.emit("joinedRoom", data);
 };
 
 
