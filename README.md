@@ -2,7 +2,7 @@
 
 A multiplayer web rendition of the connect 4 game
 
-A Live Demo can be found [here](https://connect-4-backend.herokuapp.com/ "connect4")
+A Live Demo can be found [here](https://hoppi164.github.io/connect4/ "connect4")
 
 To run this code yourself perform the following steps:
 
