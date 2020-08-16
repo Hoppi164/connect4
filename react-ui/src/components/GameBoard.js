@@ -48,12 +48,15 @@ function GameBoard() {
       if (!newGrid[rowNum][colnum]) {
         let color = redsTurn ? "Red" : "Yellow"; //determine who's turn it is
         newGrid[rowNum][colnum] = color; // add coin to cell
+
+        setGrid(newGrid); // Update the grid
+
+        // Check if player has won
         if (playerHasWon(colnum, rowNum, color, newGrid)) {
           announceWinner(color);
         }
+
         setRedsTurn(!redsTurn); // Toggle turn
-        // Update the grid
-        setGrid(newGrid);
         break;
       }
     }
