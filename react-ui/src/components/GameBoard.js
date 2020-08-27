@@ -9,14 +9,17 @@ import {
   TableRow,
   Paper,
   Container,
+  Slide,
 } from "@material-ui/core";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import { makeStyles } from "@material-ui/core/styles";
 import _ from "lodash"; // Import the entire lodash library
-
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+  },
+  coin_cell: {
+    height: 75,
   },
 });
 let directionsMatrix = {
@@ -143,8 +146,24 @@ function GameBoard() {
             {grid.map((row, index) => (
               <TableRow key={index}>
                 {row.map((cell, index) => (
-                  <TableCell align="center" key={index}>
-                    <img alt="coin" src={cell + ".svg"} height={70}></img>
+                  <TableCell
+                    align="center"
+                    key={index}
+                    className={classes.coin_cell}
+                  >
+                    <Slide
+                      direction="down"
+                      in={cell != 0}
+                      mountOnEnter
+                      unmountOnExit
+                    >
+                      <img
+                        alt={cell}
+                        className={classes.coin}
+                        src={cell + ".svg"}
+                        height={70}
+                      ></img>
+                    </Slide>
                   </TableCell>
                 ))}
               </TableRow>
