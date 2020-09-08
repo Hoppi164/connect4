@@ -33,64 +33,6 @@ Board size 7 columns × 6 rows
 
 ![Basic Wireframe](https://hoppi164.github.io/connect4/wireframe01.png)
 
-#### Todo List:
-
--   [x] Create Board using Material UI
--   [x] Create Images for Coins
--   [ ] Host Multiplayer Server on Heroku
--   [ ] Re-add GH Pages hosting for faster initial page rendering
--   [ ] Calculate Win Condition
--   [ ] Animate Game coin falling
--   [ ] Highlight winning combo
--   [ ] Settings for board size
-
-#### Pseudo-code
-
-> Globals
-
-```
-directionsMatrix = [  [[1,0],[-1,0]], [[0,1],[0,-1]], [[1,1], [-1,-1]], [[1,-1], [-1,1]] ]
-                       [E        W]    [N        S]    [NE         SW]   [NW         SE]
-currentColor = ?
-```
-
-> function to check 7 directions
-
-```
-currentCoords = [x, y] | 3,2
-
-
-[red, red, red ,red, yellow]
-
-
-for axis in directionsMatrix:
-  numMatches = 1;
-  for direction in axis:
-    testCell = currentCoords + (direction)
-    while(testCell == currentColor):
-      numMatches += 1
-      try{
-        testCell += (direction)
-      }
-      if numMatches == 4:
-        print("Four in a row")
-        
-    if numMatches == 4:
-      print("Four in a row")
-
-```
-
-> function to Drop coin
-
-```
-pressing button gives you colnumber
-for bottomRow to topRow
-  if row[colnumber] is null:
-  return co-ords
-```
-
----
-
 
 
 
