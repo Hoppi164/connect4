@@ -1,27 +1,20 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Container,
-  Slide,
-} from "@material-ui/core";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import { makeStyles } from "@material-ui/core/styles";
+import { Button, Paper, Container } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import _ from "lodash"; // Import the entire lodash library
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Coin from "../components/Coin";
+
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
+  Blue: {
+    fill: "#0500fd",
   },
-  coin_cell: {
-    height: 75,
+  marginx150: {
+    marginLeft: 150,
+    marginRight: 150,
   },
 });
+
 let directionsMatrix = {
   vertical: { south: [1, 0], north: [-1, 0] },
   horizontal: { east: [0, 1], west: [0, -1] },
@@ -30,19 +23,32 @@ let directionsMatrix = {
 };
 const numCols = 7;
 const numRows = 6;
+const coinRadius = 6.5;
+const coinMargin = 1;
+
 let initialGrid = Array.from({ length: numRows }, () =>
-  Array.from({ length: numCols }, () => 0)
+  Array.from({ length: numCols }, () => "")
 );
 
 function GameBoard() {
   // Define Const vars
+  const theme = useTheme();
+  const isScreenLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const classes = useStyles();
   // Create row x col sized empty array
   // Define state Vars
   const [redsTurn, setRedsTurn] = useState(true);
   const [grid, setGrid] = useState(initialGrid);
+  const [isButtonsDisabled, setIsButtonsDisabled] = useState(false);
 
   const dropCoin = (colnum) => {
+    // Disable all buttons for 1.5 second after clicking
+    if (isButtonsDisabled) {
+      return;
+    }
+    setIsButtonsDisabled(true);
+    setTimeout(() => setIsButtonsDisabled(false), 1500);
+
     const newGrid = _.cloneDeep(grid); //create a deep clone of the grid
 
     // loop from bottom to top
@@ -124,53 +130,31 @@ function GameBoard() {
   return (
     <Container>
       <h1> {redsTurn ? "Red" : "Yellow"} Turn! </h1>
-
-      <TableContainer component={Paper}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              {grid[0].map((col, index) => (
-                <TableCell align="center" key={index}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => dropCoin(index)}
-                  >
-                    <ArrowDownwardIcon />
-                  </Button>
-                </TableCell>
+      <svg
+        viewBox="0 0 100 100"
+        version="1.1"
+        id="GameBoard"
+        className={isScreenLarge ? classes.marginx150 : ""}
+      >
+        <g id="BlueRectangle">
+          <rect className={classes.Blue} id="rect939" width="100" height="85" />
+        </g>
+        <g id="Coins">
+          {grid.map((row, rowIndex) => (
+            <g>
+              {row.map((cell, colIndex) => (
+                <Coin
+                  rowIndex={rowIndex}
+                  colIndex={colIndex}
+                  cell={cell}
+                  isButtonsDisabled={isButtonsDisabled}
+                  dropCoin={dropCoin}
+                />
               ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {grid.map((row, index) => (
-              <TableRow key={index}>
-                {row.map((cell, index) => (
-                  <TableCell
-                    align="center"
-                    key={index}
-                    className={classes.coin_cell}
-                  >
-                    <Slide
-                      direction="down"
-                      in={cell != 0}
-                      mountOnEnter
-                      unmountOnExit
-                    >
-                      <img
-                        alt={cell}
-                        className={classes.coin}
-                        src={cell + ".svg"}
-                        height={70}
-                      ></img>
-                    </Slide>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </g>
+          ))}
+        </g>
+      </svg>
     </Container>
   );
 }
