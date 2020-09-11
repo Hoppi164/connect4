@@ -124,7 +124,10 @@ function GameBoard() {
   };
 
   const announceWinner = (winnerColor) => {
-    alert(`WINNER!, ${winnerColor} has won the game!`);
+    // Wait until coin drops before announcing
+    setTimeout(() => alert(`WINNER!, ${winnerColor} has won the game!`), 1500);
+    // Then stop the game from being continued
+    setTimeout(() => setIsButtonsDisabled(true), 1500);
   };
 
   return (
