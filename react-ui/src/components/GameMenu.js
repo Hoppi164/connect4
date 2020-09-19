@@ -10,23 +10,22 @@ import {
   CardContent,
 } from "@material-ui/core";
 
-function GameMenu() {
+function GameMenu({newGame}) {
   return (
-    <Grid container justify="center" m={2}>
+    <Grid container justify="center">
       <Card mt={2}>
         <form noValidate autoComplete="off">
           <CardContent>
-            <Grid item xs={12}>
-              <ButtonGroup
-                variant="contained"
-                color="primary"
-                aria-label="contained primary button group"
-              >
-                <Button>Local Hotseat</Button>
-                <Button>Create Online Room</Button>
-                <Button>Join Online Room</Button>
-              </ButtonGroup>
-            </Grid>
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              aria-label="contained primary button group"
+            >
+              <Button onClick={() => newGame()}>New Local Game</Button>
+
+              <Button>New Online Game</Button>
+              <Button>Join Online Room</Button>
+            </ButtonGroup>
           </CardContent>
           <CardActions>
             <Grid item xs={12}>
